@@ -1,5 +1,5 @@
 .register {
-  max-width: 400px;
+  max-width: 550px;
   margin: auto;
   margin-top: 150px;
   padding: 10px 30px;
@@ -11,14 +11,18 @@
     margin-bottom: 20px;
 
     .inputs {
-      margin-left: 10px;
+      display: flexbox;
+
+      .right {
+        margin-left: 20px;
+      }
     }
 
     .buttons {
       display: flex;
       justify-content: space-around;
       margin-top: 10px;
-      width: 230px;
+      width: 190px;
     }
   }
 }
