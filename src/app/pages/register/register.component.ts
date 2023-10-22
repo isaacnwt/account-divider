@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +8,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  form!: FormGroup
+  form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private _userService: UserService
+  ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -21,5 +25,10 @@ export class RegisterComponent implements OnInit {
   }
 
   get f() { return this.form.controls; }
+
+  public onSubmit() {
+    console.log(this.form.value);
+    this._userService.register(this.form.value);
+  }
 
 }

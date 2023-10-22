@@ -4,7 +4,7 @@
     <mat-card-subtitle>Informe seus dados:</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions>
-    <form [formGroup]="form" class="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
       <div class="inputs">
         <mat-form-field appearance="outline">
           <mat-label>Nome</mat-label>
@@ -29,7 +29,7 @@
         </mat-form-field>
       </div>
       <div class="buttons">
-        <button mat-raised-button color="primary">Entrar</button>
+        <button mat-raised-button [disabled]="!form.valid" color="primary">Entrar</button>
         <button mat-stroked-button color="primary" routerLink="..">Voltar</button>
       </div>
     </form>
