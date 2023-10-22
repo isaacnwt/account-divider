@@ -1,3 +1,38 @@
-<p>
-  register works!
-</p>
+<mat-card class="register">
+  <mat-card-header>
+    <mat-card-title>Criar conta</mat-card-title>
+    <mat-card-subtitle>Informe seus dados:</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <form [formGroup]="form" class="form">
+      <div class="inputs">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="firstName" required>
+          <mat-error *ngIf="f.firstName.errors">O campo não pode ficar vazio!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Sobrenome</mat-label>
+          <input matInput formControlName="lastName" required>
+          <mat-error *ngIf="f.lastName.errors">O campo não pode ficar vazio!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+          <mat-error *ngIf="f.email.errors?.required">O campo não pode ficar vazio!</mat-error>
+          <mat-error *ngIf="f.email.errors?.email">Email inválido!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" minlength="8" formControlName="password" required>
+          <mat-error *ngIf="f.password.errors?.required">O campo não pode ficar vazio!</mat-error>
+          <mat-error *ngIf="f.password.errors?.minlength">No mínimo 8 caracteres!</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button color="primary">Entrar</button>
+        <button mat-stroked-button color="primary" routerLink="register">Criar conta</button>
+      </div>
+    </form>
+  </mat-card-actions>
+</mat-card>

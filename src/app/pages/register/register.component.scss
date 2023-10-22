@@ -1,0 +1,24 @@
+.register {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 150px;
+  padding: 10px 30px;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 20px;
+
+    .inputs {
+      margin-left: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+      width: 230px;
+    }
+  }
+}
