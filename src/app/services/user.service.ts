@@ -17,4 +17,8 @@ export class UserService {
   public get(email: string) {
     return of(LocalStorageUtil.get(email));
   }
+
+  public getAll() {
+    return of(LocalStorageUtil.getAll());
+  }
 }
