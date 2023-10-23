@@ -33,11 +33,11 @@ export class RegisterComponent implements OnInit {
   public onSubmit() {
     this._userService.get(this.form.value.email).subscribe(result => {
       if(result) {
-        this.snackBar.open('Email já cadastrado!', 'Fechar', { duration: 3000 })
+        this.snackBar.open('Email já cadastrado!', 'Fechar', { duration: 3000 });
       } else {
         this._userService.register(this.form.value).subscribe(() => {
-          this.snackBar.open('Cadastro realizado com sucesso!', 'Fechar', { duration: 3000 })
-          this.router.navigate(['..'])
+          this.snackBar.open('Cadastro realizado com sucesso!', 'Fechar', { duration: 3000 });
+          this.router.navigate(['..']);
         });
       }
     })
