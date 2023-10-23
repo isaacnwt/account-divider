@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
     private _userService: UserService
   ) {}
@@ -32,8 +33,7 @@ export class LoginComponent implements OnInit{
     this._userService.get(this.form.value.email).subscribe(result => {
       if(result) {
         if (result.password === this.form.value.password) {
-          console.log("foi");
-          // this.router.navigate(['home']);
+          this.router.navigate(['home'], { relativeTo: this.activatedRoute.parent});
         } else {
           this.snackBar.open('Senha incorreta!', 'Fechar', { duration: 3000 });
         }
