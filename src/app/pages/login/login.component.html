@@ -7,16 +7,16 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
       <div class="inputs">
         <mat-form-field appearance="outline">
-          <mat-label>Email...</mat-label>
+          <mat-label>Email</mat-label>
           <input matInput formControlName="email" required>
           <mat-error *ngIf="f.email.errors?.required">O campo não pode ficar vazio!</mat-error>
           <mat-error *ngIf="f.email.errors?.email">Email inválido!</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label>Senha...</mat-label>
-          <input matInput type="password" minlength="8" formControlName="password" required>
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="password" required>
           <mat-error *ngIf="f.password.errors?.required">O campo não pode ficar vazio!</mat-error>
-          <mat-error *ngIf="f.password.errors?.minlength">No mínimo 8 caracteres!</mat-error>
+          <mat-error *ngIf="f.password.errors?.minlength">No mínimo 6 caracteres!</mat-error>
         </mat-form-field>
       </div>
       <div class="buttons">

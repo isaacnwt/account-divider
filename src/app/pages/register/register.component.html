@@ -23,9 +23,9 @@
         </mat-form-field>
         <mat-form-field class="right" appearance="outline">
           <mat-label>Senha</mat-label>
-          <input matInput type="password" minlength="8" formControlName="password" required>
+          <input matInput type="password" formControlName="password" required>
           <mat-error *ngIf="f.password.errors?.required">O campo não pode ficar vazio!</mat-error>
-          <mat-error *ngIf="f.password.errors?.minlength">No mínimo 8 caracteres!</mat-error>
+          <mat-error *ngIf="f.password.errors?.minlength">No mínimo 6 caracteres!</mat-error>
         </mat-form-field>
       </div>
       <div class="buttons">
