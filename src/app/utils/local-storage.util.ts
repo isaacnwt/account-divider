@@ -9,10 +9,10 @@ export class LocalStorageUtil {
   }
 
   public static remove(key: any) {
-    return localStorage.removeItem(key);
+    localStorage.removeItem(key);
   }
 
   public static removeAll() {
-    return localStorage.clear();
+    localStorage.clear();
   }
 }
