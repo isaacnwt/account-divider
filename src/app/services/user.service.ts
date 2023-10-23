@@ -11,6 +11,10 @@ export class UserService {
   constructor() { }
 
   public register(user: User) {
-    return of(LocalStorageUtil.set(user.email, JSON.stringify(user)));
+    return of(LocalStorageUtil.set(user.email, user));
+  }
+
+  public get(email: string) {
+    return of(LocalStorageUtil.get(email));
   }
 }
