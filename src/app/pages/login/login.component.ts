@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -30,16 +31,15 @@ export class LoginComponent implements OnInit{
   get f() { return this.form.controls; }
 
   public onSubmit() {
-    this._userService.get(this.form.value.email).subscribe(result => {
-      if(result) {
-        if (result.password === this.form.value.password) {
-          this.router.navigate(['home'], { relativeTo: this.activatedRoute.parent});
-        } else {
+    this._userService.logIn(this.form.value).subscribe({
+      next: () => this.router.navigate(['home'], { relativeTo: this.activatedRoute.parent}),
+      error: (err) => {
+        if (err === "User not found")
+          this.snackBar.open('Usuário não cadastrado!', 'Fechar', { duration: 3000 });
+        else if (err === "Wrong password")
           this.snackBar.open('Senha incorreta!', 'Fechar', { duration: 3000 });
-        }
-      } else {
-        this.snackBar.open('Usuário não cadastrado!', 'Fechar', { duration: 3000 });
+        else this.snackBar.open('Algo deu errado! Tente novamente...', 'Fechar', { duration: 3000 });
       }
-    });
+      });
   }
 }
