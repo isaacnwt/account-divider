@@ -26,7 +26,13 @@ export class UserService {
   }
 
   public getAll() {
-    return of(LocalStorageUtil.getAll() as User[]);
+    const storage = LocalStorageUtil.getAll();
+    let users: User[] = [];
+
+    for (const key in storage)
+      users.push(LocalStorageUtil.get(key));
+
+    return of(users);
   }
 
   public getLogged() {
