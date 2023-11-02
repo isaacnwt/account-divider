@@ -15,5 +15,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-stroked-button color="primary" (click)="onNoClick()">Cancelar</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="form.valid" cdkFocusInitial>Criar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [mat-dialog-close]="form.valid" cdkFocusInitial>Criar</button>
 </div>
