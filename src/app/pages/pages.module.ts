@@ -1,3 +1,4 @@
+import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -13,14 +14,16 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { RegisterComponent } from './register/register.component';
+import { NewBillDialogComponent } from '../components/new-bill-dialog/new-bill-dialog.component';
 
 
-
+// TODO - remove NewBillDialogComponent
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    NewBillDialogComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,8 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ]
 })
 export class PagesModule { }
