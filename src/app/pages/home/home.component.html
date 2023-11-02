@@ -1,11 +1,21 @@
 <mat-card class="main">
   <mat-card-header>
     <mat-card-title>Olá, {{ loggedUser.firstName }}!</mat-card-title>
-    <mat-card-subtitle>Crie uma nova conta e dívida com quem está te devendo!</mat-card-subtitle>
+    <mat-card-subtitle>Crie uma nova conta e divida com quem está te devendo!</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions>
     <button mat-mini-fab color="basic" (click)="createBill()"  aria-label="Example icon button with a delete icon">
       <mat-icon>add</mat-icon>
     </button>
   </mat-card-actions>
+  <div class="bills">
+    <h2>Contas</h2>
+    <div class="bill" *ngFor="let bill of bills">
+      <h3><b>Valor: </b>{{ bill.amount }}</h3>
+      <h3><b>Devedores:</b></h3>
+      <p *ngFor="let debtor of bill.debtors">
+        <b>{{ debtor.name }}: </b>{{ debtor.debtValue }}
+      </p>
+    </div>
+  </div>
 </mat-card>
