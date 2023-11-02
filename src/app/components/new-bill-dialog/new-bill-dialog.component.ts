@@ -21,8 +21,10 @@ export class NewBillDialogComponent implements OnInit{
     private _userService: UserService,
     private _billService: BillService
   ) {
-    this._userService.getAll().subscribe(result => this.users = result)
     this._userService.getLogged().subscribe(result => this.loggedUser = result)
+    this._userService.getAll().subscribe(result =>
+      this.users = result.filter(user => user.email !== this.loggedUser.email)
+    )
   }
 
   ngOnInit(): void {

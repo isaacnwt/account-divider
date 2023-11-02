@@ -13,7 +13,7 @@ export class UserService {
   public register(user: User) {
     const result = LocalStorageUtil.get(user.email);
     if (result == null)
-      return of(LocalStorageUtil.set(user.email, user));
+      return of(LocalStorageUtil.set("USER_" + user.email, user));
     else return throwError(() => 'User already exists');
   }
 
@@ -29,8 +29,10 @@ export class UserService {
     const storage = LocalStorageUtil.getAll();
     let users: User[] = [];
 
-    for (const key in storage)
-      users.push(LocalStorageUtil.get(key));
+    for (const key in storage) {
+      if (key.includes("USER_"))
+        users.push(LocalStorageUtil.get(key));
+    }
 
     return of(users);
   }
