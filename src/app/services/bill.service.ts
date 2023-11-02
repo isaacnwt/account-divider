@@ -16,4 +16,10 @@ export class BillService {
     bills.push(bill);
     return of(LocalStorageUtil.set("BILLS_" + user.email, bills));
   }
+
+  public getAll(user: User) {
+    let bills: Bill[] = [];
+    bills = LocalStorageUtil.get("BILLS_" + user.email);
+    return of(bills);
+  }
 }

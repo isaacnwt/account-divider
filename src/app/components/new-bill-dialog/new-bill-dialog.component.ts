@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Bill } from 'src/app/models/bill';
+import { Debtor } from 'src/app/models/debtor';
 import { User } from 'src/app/models/user';
 import { BillService } from 'src/app/services/bill.service';
 import { UserService } from 'src/app/services/user.service';
@@ -35,10 +37,17 @@ export class NewBillDialogComponent implements OnInit{
   }
 
   public onSubmit() {
-    this._billService.save(this.loggedUser, this.form.value);
+    const debtors: Debtor[] = this.form.value.debtors;
+    const amount: number = this.form.value.amount;
+    debtors.map(debtor => debtor.debtValue = amount/debtors.length);
+    this._billService.save(this.loggedUser, { amount: amount, debtors: debtors });
   }
 
-  onNoClick(): void {
+  public onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  public debtorOf(user: User) {
+    return Debtor.of(user)
   }
 }
