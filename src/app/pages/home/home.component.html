@@ -9,8 +9,7 @@
     </button>
   </mat-card-actions>
   <div class="bills">
-    <h2 *ngIf="bills">Contas</h2>
-    <mat-accordion *ngFor="let bill of bills">
+    <mat-accordion *ngFor="let bill of bills" class="bill-accordion">
         <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
