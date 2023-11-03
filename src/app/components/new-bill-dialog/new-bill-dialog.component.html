@@ -3,7 +3,7 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
     <mat-form-field appearance="outline">
       <mat-label>Título</mat-label>
-      <input matInput formControlName="title" placeholder="Ex: Pizza, Conta do bar">
+      <input matInput formControlName="title" maxlength="20" placeholder="Ex: Pizza, Conta do bar">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Valor</mat-label>
