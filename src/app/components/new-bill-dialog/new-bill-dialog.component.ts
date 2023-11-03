@@ -31,6 +31,7 @@ export class NewBillDialogComponent implements OnInit{
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
+      title: ['', [Validators.required]],
       amount: ['', [Validators.required]],
       debtors: ['']
     })
@@ -41,7 +42,7 @@ export class NewBillDialogComponent implements OnInit{
     const amount: number = this.form.value.amount;
     debtors.push(this.debtorOf(this.loggedUser));
     debtors.map(debtor => debtor.debtValue = amount/debtors.length);
-    this._billService.save(this.loggedUser, { amount: amount, debtors: debtors });
+    this._billService.save(this.loggedUser, { title: this.form.value.title, amount: amount, debtors: debtors });
   }
 
   public onNoClick(): void {

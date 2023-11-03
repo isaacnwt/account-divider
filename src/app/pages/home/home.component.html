@@ -13,7 +13,12 @@
     <mat-accordion *ngFor="let bill of bills">
         <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <p><b>Valor: </b>{{ formatToReais(bill.amount) }}</p>
+              <mat-panel-title>
+                {{ bill.title }}
+              </mat-panel-title>
+              <mat-panel-description>
+                {{ formatToReais(bill.amount) }}
+              </mat-panel-description>
             </mat-expansion-panel-header>
             <h3>Divisão:</h3>
             <p *ngFor="let debtor of bill.debtors">
