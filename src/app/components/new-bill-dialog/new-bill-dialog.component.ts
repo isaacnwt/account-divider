@@ -39,6 +39,7 @@ export class NewBillDialogComponent implements OnInit{
   public onSubmit() {
     const debtors: Debtor[] = this.form.value.debtors;
     const amount: number = this.form.value.amount;
+    debtors.push(this.debtorOf(this.loggedUser));
     debtors.map(debtor => debtor.debtValue = amount/debtors.length);
     this._billService.save(this.loggedUser, { amount: amount, debtors: debtors });
   }

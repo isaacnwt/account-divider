@@ -22,21 +22,23 @@ export class HomeComponent{
     public dialog: MatDialog
   ) {
     this._userService.getLogged().subscribe(result => this.loggedUser = result);
-    this._billService.getAll(this.loggedUser).subscribe(result => this.bills = result);
+    this.loadBills();
   }
 
-    openDialog(): void {
-      const dialogRef = this.dialog.open(NewBillDialogComponent, {
-        data: {},
-      });
+  public openDialog(): void {
+    const dialogRef = this.dialog.open(NewBillDialogComponent, {
+      data: {},
+    });
 
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-      });
-    }
+    dialogRef.afterClosed().subscribe(() => this.loadBills());
+  }
 
   public createBill() {
     this.openDialog();
+  }
+
+  private loadBills() {
+    this._billService.getAll(this.loggedUser).subscribe(result => this.bills = result);
   }
 
 }

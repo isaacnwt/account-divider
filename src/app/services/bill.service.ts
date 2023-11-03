@@ -13,13 +13,15 @@ export class BillService {
 
   public save(user: User, bill: Bill) {
     let bills: Bill[] = [];
+    const result = LocalStorageUtil.get("BILLS_" + user.email);
+    if (result)
+      bills = result;
     bills.push(bill);
     return of(LocalStorageUtil.set("BILLS_" + user.email, bills));
   }
 
   public getAll(user: User) {
-    let bills: Bill[] = [];
-    bills = LocalStorageUtil.get("BILLS_" + user.email);
+    let bills: Bill[] = LocalStorageUtil.get("BILLS_" + user.email);
     return of(bills);
   }
 }

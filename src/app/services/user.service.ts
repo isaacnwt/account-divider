@@ -18,7 +18,7 @@ export class UserService {
   }
 
   public logIn(user: User) {
-    const result = LocalStorageUtil.get(user.email);
+    const result = LocalStorageUtil.get("USER_" + user.email);
     if (result) {
       if (result.password === user.password) return of(LocalStorageUtil.set('LOGGED', result));
       else  return throwError(() => 'Wrong password');
