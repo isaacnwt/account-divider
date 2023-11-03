@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewBillDialogComponent } from 'src/app/components/new-bill-dialog/new-bill-dialog.component';
 import { Bill } from 'src/app/models/bill';

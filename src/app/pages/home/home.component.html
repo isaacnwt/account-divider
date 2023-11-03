@@ -10,12 +10,16 @@
   </mat-card-actions>
   <div class="bills">
     <h2 *ngIf="bills">Contas</h2>
-    <div class="bill" *ngFor="let bill of bills">
-      <h3><b>Valor: </b>{{ bill.amount }}</h3>
-      <h3><b>Devedores:</b></h3>
-      <p *ngFor="let debtor of bill.debtors">
-        <b>{{ debtor.email != loggedUser.email ? debtor.name : "Você" }}: </b>{{ debtor.debtValue }}
-      </p>
-    </div>
+
+    <mat-accordion displayMode="default" [multi]="true"
+                   [hideToggle]="false" *ngFor="let bill of bills">
+        <mat-expansion-panel [hideToggle]="false">
+            <mat-expansion-panel-header><b>Valor: </b>{{ bill.amount }}</mat-expansion-panel-header>
+            <h3><b>Devedores:</b></h3>
+            <p *ngFor="let debtor of bill.debtors">
+              <b>{{ debtor.email != loggedUser.email ? debtor.name : "Você" }}: </b>{{ debtor.debtValue }}
+            </p>
+        </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </mat-card>
