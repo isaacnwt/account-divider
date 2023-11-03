@@ -37,8 +37,13 @@ export class HomeComponent{
     this.openDialog();
   }
 
+  public formatToReais(value: number): string {
+    return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+  }
+
   private loadBills() {
     this._billService.getAll(this.loggedUser).subscribe(result => this.bills = result);
   }
+
 
 }
